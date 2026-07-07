@@ -1,0 +1,35 @@
+---
+import { getLocaleFromUrl, t, getUrlWithLocale } from "@/i18n";
+
+const year = new Date().getFullYear();
+const locale = getLocaleFromUrl(Astro.url);
+---
+
+<footer id="studio" class="mt-32 border-t border-line py-24">
+  <div class="mx-auto grid max-w-screen-xl grid-cols-1 gap-12 px-6 md:grid-cols-3">
+    <div class="space-y-4">
+      <div class="font-serif text-lg italic tracking-tight">Ser Cerámico</div>
+      <p class="max-w-[30ch] text-sm leading-relaxed text-faded">
+        {t(locale, "footerDescription")}
+      </p>
+    </div>
+    <div class="space-y-4">
+      <h2 class="text-xs font-medium uppercase tracking-widest">{t(locale, "footerInquiries")}</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/about#studio" class="text-faded transition-colors hover:text-ink">{t(locale, "footerCustomOrders")}</a></li>
+        <li><a href="/about#studio" class="text-faded transition-colors hover:text-ink">{t(locale, "footerTradePortal")}</a></li>
+        <li><a href="/about#studio" class="text-faded transition-colors hover:text-ink">{t(locale, "footerStudioVisits")}</a></li>
+      </ul>
+    </div>
+    <div class="space-y-4">
+      <h2 class="text-xs font-medium uppercase tracking-widest">{t(locale, "footerContact")}</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="https://wa.me/50684234581" class="text-faded transition-colors hover:text-ink">{t(locale, "footerWhatsApp")}</a></li>
+        <li><a href="mailto:contacto@serceramico.com" class="text-faded transition-colors hover:text-ink">{t(locale, "footerEmail")}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mx-auto mt-16 max-w-screen-xl px-6 text-[10px] uppercase tracking-[0.2em] text-faded">
+    © {year} Ser Cerámico — {t(locale, "footerMadeToOrder")}
+  </div>
+</footer>
