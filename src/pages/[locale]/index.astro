@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import ProductCard from "@/components/ProductCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import heroImg from "@/assets/sercera_1.png";
+import sercera3Img from "@/assets/sercera_3.png";
+import sercera4Img from "@/assets/sercera_4.png";
 import { formatPrice, getProducts } from "@/data/products.js";
 import { getLocaleFromParams, LOCALES, t, getUrlWithLocale } from "@/i18n";
 
@@ -120,7 +122,7 @@ if (!solo) {
               {t(locale, "homeExplore")}
               <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <a href={getUrlWithLocale("/about", locale)} class="text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
+            <a href={getUrlWithLocale("/about", locale)} class="hidden text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink md:inline-block">
               {t(locale, "homeProcess")} →
             </a>
           </div>
@@ -158,6 +160,50 @@ if (!solo) {
       <a href={getUrlWithLocale("/catalog", locale)} class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
         {t(locale, "homeMobileCatalog")}
       </a>
+    </div>
+  </section>
+
+  <section class="mx-auto mt-32 max-w-screen-xl px-6 md:mt-48">
+    <div class="border-t border-line pt-12">
+      <p class="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-faded">
+        <span class="inline-block h-px w-8 bg-ink/40"></span>
+        {t(locale, "aboutBadge")}
+      </p>
+      <h2 class="max-w-[20ch] text-balance font-serif text-3xl leading-[0.95] md:text-5xl">
+        {t(locale, "aboutTitle")} <span class="italic text-accent">{t(locale, "aboutTitleAccent")}</span>
+      </h2>
+      <p class="mt-8 mb-16 max-w-[60ch] text-lg leading-relaxed text-faded">
+        {t(locale, "aboutDescription")}
+      </p>
+    </div>
+  </section>
+
+  <section class="relative w-full px-6 md:px-8">
+    <div class="mx-auto max-w-screen-xl">
+      <div class="grid gap-4 md:grid-cols-[1.05fr_0.95fr] md:gap-6">
+        <div class="overflow-hidden rounded-[1.75rem] border border-line bg-paper shadow-[0_24px_80px_rgba(0,0,0,0.08)]">
+          <Image
+            src={sercera3Img}
+            alt="Sercera piece inspired by Costa Rican biodiversity"
+            width={1600}
+            height={1200}
+            format="webp"
+            loading="lazy"
+            class="h-[45vh] w-full object-cover md:h-[70vh]"
+          />
+        </div>
+        <div class="overflow-hidden rounded-[1.75rem] border border-line bg-paper shadow-[0_24px_80px_rgba(0,0,0,0.08)] md:-translate-y-6">
+          <Image
+            src={sercera4Img}
+            alt="Second Sercera piece presented alongside the first"
+            width={1600}
+            height={1200}
+            format="webp"
+            loading="lazy"
+            class="h-[45vh] w-full object-cover md:h-[70vh]"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
