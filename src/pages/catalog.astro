@@ -5,17 +5,7 @@ import { getProductFilters, getProducts } from "@/data/products.js";
 import { getLocaleFromUrl, t } from "@/i18n";
 
 const locale = getLocaleFromUrl(Astro.url);
-const allProducts = await getProducts();
-const products = allProducts.filter((product) =>
-  product.images?.some((image: unknown) => {
-    if (!image) return false;
-    if (typeof image === "string") return image.includes("serprod");
-    if (typeof image === "object" && image !== null && "src" in image) {
-      return String((image as { src?: unknown }).src).includes("serprod");
-    }
-    return String(image).includes("serprod");
-  }) ?? false,
-);
+const products = await getProducts();
 const { categories: allCategories, materials: allMaterials } = getProductFilters(products);
 ---
 

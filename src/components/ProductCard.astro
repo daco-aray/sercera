@@ -1,20 +1,21 @@
 ---
-import { Image } from "astro:assets";
 import { formatPrice } from "@/data/products.js";
+import { getLocaleFromParams, getUrlWithLocale } from "@/i18n";
 
+
+const locale = getLocaleFromParams(Astro.params);
 const { product, eager = false } = Astro.props;
----
 
-<a href={`/products/${product.slug}`} class="group block space-y-4" data-product-card>
+---
+<a href={getUrlWithLocale(`/products/${product.slug}`, locale)} class="group block space-y-4" data-product-card>
   <div class="aspect-[4/5] overflow-hidden rounded-[min(1vw,12px)] bg-paper">
-    <Image
+    <img
       src={product.images[0]}
       alt={`${product.name} — ${product.shortDescription}`}
       width={1024}
       height={1280}
       loading={eager ? "eager" : "lazy"}
       decoding={eager ? "sync" : "async"}
-      format="webp"
       class="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
     />
   </div>
@@ -23,6 +24,6 @@ const { product, eager = false } = Astro.props;
       <h2 class="text-sm font-medium">{product.name}</h2>
       <p class="text-xs text-faded">{product.shortDescription}</p>
     </div>
-    <span class="text-sm tabular-nums">{formatPrice(product.price)}</span>
+    <span class="text-sm tabular-nums">{formatPrice(product.price, product.currencyCode)}</span>
   </div>
 </a>

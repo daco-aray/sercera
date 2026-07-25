@@ -61,41 +61,33 @@ SITE=https://your-domain.com npm run build
 
 The configured `site` value is used for canonical URLs, sitemap generation, and `robots.txt`. The default preview site is `https://atelier-ko-topaz.vercel.app/`.
 
-Main content files:
+Main configuration files:
 
-- `src/content/products/*.md` — product catalogue entries, frontmatter, images, and descriptions
-- `src/content.config.ts` — product content collection schema
-- `src/data/products.ts` — helper utilities that read and sort product content
+- `.env` — Shopify storefront endpoint and public Storefront API token
+- `src/data/products.ts` — Shopify Storefront API client and product mapping
 - `src/layouts/BaseLayout.astro` — shared metadata, global shell, header/footer slots, and cart helper
 - `src/components/SiteHeader.astro` — navigation and cart badge
 - `src/components/SiteFooter.astro` — footer links and studio copy
 - `src/styles.css` — design tokens, Tailwind setup, and local font declarations
 
-## Adding Products
+## Shopify Catalogue
 
-Add one Markdown file per product in `src/content/products/`. The file name becomes the product URL slug, so `arvid-chair.md` becomes `/products/arvid-chair`.
+Products are managed in Shopify. Copy `.env.example` to `.env` and add the Storefront API endpoint and public token:
 
-```md
----
-name: Arvid Chair
-collection: Collection 01 — Seating
-category: Seating
-material: Ash
-price: 840
-shortDescription: Curved Ash
-dimensions: W 54 × D 56 × H 92 cm
-finish: Soap-Treated
-leadTime: 6–8 Weeks
-images:
-  - ../../assets/p-arvid-1.jpg
-  - ../../assets/p-arvid-2.jpg
-order: 2
----
-
-A single sculpted shell of steam-bent ash, the Arvid Chair traces the silhouette of the body.
+```env
+SHOPIFY_STORE=https://your-store.myshopify.com/api/2025-07/graphql.json
+SHOPIFY_STOREFRONT_TOKEN=your-storefront-access-token
 ```
 
-Product images should live in `src/assets/` so Astro can optimize them. Categories and materials are derived automatically from the product files and appear as catalogue filters.
+Only products published to the **Headless** sales channel are included. Product type becomes the catalogue category. Optional Shopify tags add detail fields to product pages:
+
+- `material:Stoneware`
+- `dimensions:20 × 15 cm`
+- `finish:Matte glaze`
+- `lead-time:2 weeks`
+- `collection:Fauna collection`
+
+Each published product receives a static page at `/products/[handle]`. The site is rebuilt when Shopify products change, so redeploy after adding, editing, or marking a piece as sold out.
 
 ## Pages
 
@@ -103,7 +95,7 @@ Product images should live in `src/assets/` so Astro can optimize them. Categori
 - `/catalog` — Full catalogue with filters
 - `/products/[slug]` — Product detail
 - `/about` — Studio story
-- `/cart` — Cart and checkout preview
+- `/cart` — Explains that purchases are completed by WhatsApp
 
 ## Images and Fonts
 
@@ -133,4 +125,4 @@ This project is licensed under the [MIT License](LICENSE).
 ## Notes
 
 - Replace the demo product copy, prices, and images with your own catalogue before publishing.
-- The newsletter and checkout flows are design previews; connect them to your preferred backend or form provider if needed.
+- Product enquiries open WhatsApp; Shopify is used for the product catalogue and availability, not checkout.

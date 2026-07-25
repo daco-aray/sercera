@@ -14,7 +14,7 @@ export function getLocaleFromUrl(url?: URL | string): Locale {
   return DEFAULT_LOCALE;
 }
 
-export function getLocaleFromParams(params?: Record<string, string>): Locale {
+export function getLocaleFromParams(params?: Record<string, string | undefined>): Locale {
   const locale = params?.locale?.toLowerCase();
   if (locale === "en") return "en";
   if (locale === "es") return "es";
@@ -113,6 +113,8 @@ const translations = {
     productFinish: "Acabado",
     productLeadTime: "Plazo",
     productBreadcrumbCatalog: "Catálogo",
+    productRelatedTitle: "Piezas que combinan bien",
+    productRelatedViewAll: "Ver todo",
     notFoundTitle: "Página no encontrada",
     notFoundCopy: "La página que buscas no existe o ha sido movida.",
     notFoundCta: "Volver al catálogo",
@@ -186,6 +188,8 @@ const translations = {
     productFinish: "Finish",
     productLeadTime: "Lead time",
     productBreadcrumbCatalog: "Catalogue",
+    productRelatedTitle: "Pieces that sit well together",
+    productRelatedViewAll: "View all",
     notFoundTitle: "Page not found",
     notFoundCopy: "The page you are looking for does not exist or has been moved.",
     notFoundCta: "Back to the catalogue",

@@ -18,11 +18,11 @@ const navItems = [
 ];
 const languageToggleHref = getLocaleSwitchUrl(Astro.url, locale === "en" ? "es" : "en");
 
-const featuredProduct = await getProduct("oken-stool");
+// const featuredProduct = await getProduct("oken-stool");
 
-if (!featuredProduct) {
-  throw new Error("Missing required mobile menu product: oken-stool");
-}
+// if (!featuredProduct) {
+//   throw new Error("Missing required mobile menu product: oken-stool");
+// }
 ---
 
 <nav class="sticky top-0 z-50 border-b border-line bg-base/80 backdrop-blur-md" aria-label="Main navigation">
@@ -56,7 +56,8 @@ if (!featuredProduct) {
       >
         {getLocaleLabel(locale)}
       </a>
-      <a
+      {/* Cart link hidden for now */}
+      {/* <a
         href={getUrlWithLocale("/cart", locale)}
         data-cart-label
         aria-label={t(locale, "navCartAria")}
@@ -77,7 +78,7 @@ if (!featuredProduct) {
           <path d="M9 8a3 3 0 0 1 6 0"></path>
         </svg>
         <span class="tabular-nums text-faded" data-cart-count>(0)</span>
-      </a>
+      </a> */}
       <button
         type="button"
         class="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:text-accent md:hidden"
@@ -149,7 +150,8 @@ if (!featuredProduct) {
               </a>
             ))
           }
-          <a
+          {/* Cart link hidden for now */}
+          {/* <a
             href="/cart"
             data-cart-label
             aria-label="Cart, 0 items"
@@ -158,10 +160,10 @@ if (!featuredProduct) {
           >
             Cart
             <span class="tabular-nums" data-cart-count>(0)</span>
-          </a>
+          </a> */}
         </div>
 
-        <a
+        <!-- <a
           href={`/products/${featuredProduct.slug}`}
           class="group block border-y border-line py-4"
           data-mobile-menu-link
@@ -187,7 +189,7 @@ if (!featuredProduct) {
               {formatPrice(featuredProduct.price)}
             </p>
           </div>
-        </a>
+        </a> -->
 
         <div class="mt-auto space-y-2 text-sm">
           <p class="text-[10px] uppercase tracking-[0.3em] text-faded">Contact</p>
