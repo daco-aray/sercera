@@ -2,9 +2,9 @@
 import ProductCard from "@/components/ProductCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getProductFilters, getProducts } from "@/data/products.js";
-import { getLocaleFromParams, t } from "@/i18n";
+import { getLocaleFromUrl, t } from "@/i18n";
 
-const locale = getLocaleFromParams(Astro.params);
+const locale = getLocaleFromUrl(Astro.url);
 const products = await getProducts();
 const { categories: allCategories, materials: allMaterials } = getProductFilters(products);
 ---

@@ -87,7 +87,7 @@ Only products published to the **Headless** sales channel are included. Product 
 - `lead-time:2 weeks`
 - `collection:Fauna collection`
 
-Each published product receives a static page at `/products/[handle]`. The site is rebuilt when Shopify products change, so redeploy after adding, editing, or marking a piece as sold out.
+Each published product receives a page at `/products/[handle]`. The catalogue is rendered on request, so products and availability changes published to the Headless channel appear without a redeploy.
 
 ## Pages
 

@@ -5,9 +5,9 @@ import handsImg from "@/assets/atelier-hands.jpg";
 import workshopImg from "@/assets/atelier-workshop.jpg";
 import sercera3Img from "@/assets/sercera_3.png";
 import sercera4Img from "@/assets/sercera_4.png";
-import { getLocaleFromParams, t, getUrlWithLocale } from "@/i18n";
+import { getLocaleFromUrl, t } from "@/i18n";
 
-const locale = getLocaleFromParams(Astro.params);
+const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <BaseLayout
@@ -104,7 +104,7 @@ const locale = getLocaleFromParams(Astro.params);
     </div>
   </section>
 
-  <!-- <section class="mt-24 md:mt-32">
+  <section class="mt-24 md:mt-32">
     <div class="mx-auto grid max-w-screen-2xl items-center gap-10 px-6 md:grid-cols-12 md:gap-16">
       <div class="md:col-span-5">
         <div class="aspect-[3/4] overflow-hidden rounded-[min(1vw,12px)] bg-paper">
@@ -119,9 +119,9 @@ const locale = getLocaleFromParams(Astro.params);
           />
         </div>
       </div>
-  </section> -->
+  </section>
 
-  <!-- <section class="mx-auto mt-24 max-w-screen-xl border-y border-line px-6 py-12 md:mt-32">
+  <section class="mx-auto mt-24 max-w-screen-xl border-y border-line px-6 py-12 md:mt-32">
     <div class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
       {
         [
@@ -137,7 +137,7 @@ const locale = getLocaleFromParams(Astro.params);
         ))
       }
     </div>
-  </section> -->
+  </section>
 
   <section id="studio" class="mx-auto mb-32 mt-12 max-w-screen-xl px-6 md:mt-16">
     <div class="grid items-end gap-10 md:grid-cols-12">
@@ -148,16 +148,16 @@ const locale = getLocaleFromParams(Astro.params);
       </div>
       <div class="flex flex-col gap-4 sm:flex-row md:col-span-5 md:justify-end">
         <a
-          href={getUrlWithLocale("/catalog", locale)}
+          href="/catalog"
           class="inline-flex items-center justify-center gap-3 rounded-full bg-ink px-7 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent"
         >
-          {t(locale, "aboutCatalogCta")}
+          Ver el catálogo →
         </a>
         <a
           href="mailto:workshop@atelier-ko.example"
           class="inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-ink ring-1 ring-line transition-colors hover:bg-paper"
         >
-          {t(locale, "aboutContactCta")}
+          Escríbenos
         </a>
       </div>
     </div>

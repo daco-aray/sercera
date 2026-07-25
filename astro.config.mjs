@@ -4,7 +4,7 @@ import vercel from "@astrojs/vercel";
 
 export default defineConfig({
   site: process.env.SITE ?? "https://atelier-ko-topaz.vercel.app",
-  output: "static",
+  output: "server",
   integrations: [sitemap()],
   adapter: vercel()
 });
